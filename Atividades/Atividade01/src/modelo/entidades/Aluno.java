@@ -25,6 +25,16 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+
+
 
     
 }
