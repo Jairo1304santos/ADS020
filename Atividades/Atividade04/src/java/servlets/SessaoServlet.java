@@ -1,4 +1,3 @@
-
 package servlets;
 
 import java.io.IOException;
@@ -8,32 +7,32 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+@WebServlet(name = "SessaoServlet", urlPatterns = {"/SessaoServlet"})
+public class SessaoServlet extends HttpServlet {
 
-@WebServlet(name = "OlaMundoServlet", urlPatterns = {"/OlaMundoServlet"})
-public class OlaMundoServlet extends HttpServlet {
-
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
+            HttpSession session = request.getSession();
             String nome = request.getParameter("nome");
             if (nome != null && nome.isEmpty() == false) {
-            out.println("<h1>Olá " + nome + "!</h1>");
-            } else {
-                out.println("<h1>Olá Mundo!</h1>");
+                session.setAttribute("nome", nome);
             }
-            
+
+            request.getSession();
+            out.println("SESSION_ID=" + session.getId());
+            out.println("Nome salvo na sessão: " + session.getAttribute("nome"));
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet OlaMundoServlet</title>");            
+            out.println("<title>Servlet SessaoServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Olá mundo!</h1>");
-            out.println("<a href=" + response.encodeURL(request.getContextPath()+"/index.html") + ">Voltar</a>");
+            out.println("<h1>Servlet SessaoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
