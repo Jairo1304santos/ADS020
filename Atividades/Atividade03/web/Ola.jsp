@@ -12,23 +12,25 @@
         <title>Diga Olá</title>
     </head>
     <body>
+        <%java.util.Date data = new java.util.Date();%> 
+        <%=data%>
         <%
             String nome = request.getParameter("nome");
             if (nome == null || nome.isEmpty()) {
         %>
         <h1>Olá Mundo!</h1>
         <%
-            } else {
+        } else {
         %>
         <h1>Olá <%=nome%>!</h1>
         <%
             }
         %>
         <p>Você está acessando uma página JSP.</p>
-}
-}
-        
-            }
-        
+        }
+        }
+
+        }
+
     </body>
 </html>
