@@ -16,10 +16,6 @@ import modelo.entidades.Aluno;
 @WebServlet(name = "ListarAlunoServlet", urlPatterns = {"/aluno"})
 public class ListarAlunoServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Aluno> lista = new ArrayList<Aluno>();
@@ -39,11 +35,14 @@ public class ListarAlunoServlet extends HttpServlet {
             out.println("<title>Cadastro de Alunos</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListarAlunoServlet at " + request.getContextPath() + "</h1>");
             out.println("<h1> Listagem de Alunos</h1");
             out.println("<a href='" + response.encodeURL("/aluno/incluir") + "'>Incluir</a>");
             out.println("<table>");
             out.println("<tr>");
+            out.println("<th>Matrícula</th>");
+            out.println("<th>Nome</th>");
+            out.println("<th>Ações</th>");
+            out.println("</tr>");
             for (Aluno aluno : lista) {
                 out.println("<tr>");
                 out.println("<td>" + aluno.getMatricula() + "</td>");
@@ -52,10 +51,6 @@ public class ListarAlunoServlet extends HttpServlet {
                 out.println("<a href='" + response.encodeURL("/aluno/excluir?id=") + aluno.getId() + "' onclick='return confirm('Deseja excluir o aluno?');'>Excluir</a></td>");
                 out.println("</tr>");
             }
-            out.println("<th>Matrícula</th>");
-            out.println("<th>Nome</th>");
-            out.println("<th>Ações</th>");
-            out.println("</tr>");
             out.println("</table>");
             out.println("</body>");
             out.println("</html>");
