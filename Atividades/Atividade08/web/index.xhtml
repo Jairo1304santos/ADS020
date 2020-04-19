@@ -6,13 +6,11 @@
         <title>JSF</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        
         <h3>Testando Escopo do Managed Bean</h3>
         <h:form>
             <p><h:outputText value="O valor salvo no ManagedBean é "/>
                 <h:outputText value="#{escopoMB.valor}"/></p>
-            <h:commandLink value="Recarregar" action="#{escopoMB.recarregar()}"/>
+            <h:commandLink value="Recarregar" action="#{escopoMB.recarregar}"/>
         </h:form>
     </h:body>
 </html>

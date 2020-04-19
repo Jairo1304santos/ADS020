@@ -32,10 +32,12 @@ public class LoginMB {
         this.senha = senha;
     }
 
-    FacesContext context = FacesContext.getCurrentInstance();
-    FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROREVERITY_ERROR, "Login inválido!");
+    public String entrar() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login inválido!");
 
-     context.addMessage (null, mensagem);
+        context.addMessage(null, mensagem);
+        return "index";
+    }
 
-    
 }
